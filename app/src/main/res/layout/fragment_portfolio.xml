@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <TextView
+      android:id="@+id/totalHoldingsTextView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:background="@color/colorPrimary"
+      android:textColor="#fff"
+      android:paddingTop="4dp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      android:textStyle="bold"
+      tools:text="4000 USD"
+      android:textSize="26sp"/>
+
+  <TextView
+      android:id="@+id/totalProfitTextView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:background="@color/colorPrimary"
+      android:textColor="#04c701"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@id/totalHoldingsTextView"
+      tools:text="+450(+10%)"
+      android:padding="5dp"
+      android:textSize="18sp"/>
+
+  <TextView
+      android:id="@+id/coinLabel"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintWidth_percent="0.33"
+      app:layout_constraintTop_toBottomOf="@id/totalProfitTextView"
+      app:layout_constraintStart_toStartOf="parent"
+      android:paddingStart="16dp"
+      android:paddingLeft="16dp"
+      android:textSize="16sp"
+      android:padding="4dp"
+      android:textColor="#fff"
+      android:background="@color/colorPrimaryDark"
+      android:text="@string/portfolio_label_coin"
+      tools:ignore="RtlSymmetry" />
+
+
+  <TextView
+      android:id="@+id/holdingsLabel"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintWidth_percent="0.33"
+      app:layout_constraintTop_toBottomOf="@id/totalProfitTextView"
+      app:layout_constraintStart_toEndOf="@id/coinLabel"
+      android:textSize="16sp"
+      android:padding="4dp"
+      android:textColor="#fff"
+      android:background="@color/colorPrimaryDark"
+      android:text="@string/portfolio_label_holdings"/>
+
+  <TextView
+      android:id="@+id/priceProfitsLabel"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      app:layout_constraintWidth_percent="0.34"
+      app:layout_constraintTop_toBottomOf="@id/totalProfitTextView"
+      app:layout_constraintStart_toEndOf="@id/holdingsLabel"
+      app:layout_constraintEnd_toEndOf="parent"
+      android:paddingEnd="16dp"
+      android:paddingRight="16dp"
+      android:gravity="end"
+      android:textSize="16sp"
+      android:padding="4dp"
+      android:textColor="#fff"
+      android:background="@color/colorPrimaryDark"
+      android:text="@string/portfolio_label_price_profits"
+      tools:ignore="RtlSymmetry" />
+
+  <android.support.v7.widget.RecyclerView
+      android:id="@+id/transactionsByPairSetsRecyclerView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_constraintTop_toBottomOf="@id/priceProfitsLabel"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      tools:listitem="@layout/fragment_portfolio_trading_pair_item"
+      tools:context=".ui.portfolio.PortfolioFragment"/>
+
+  <android.support.design.widget.FloatingActionButton
+      android:id="@+id/addTransactionButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      android:tint="#fff"
+      app:srcCompat="@android:drawable/ic_input_add"
+      android:layout_margin="16dp"/>
+
+</android.support.constraint.ConstraintLayout>

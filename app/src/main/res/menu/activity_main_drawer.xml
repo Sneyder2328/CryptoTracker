@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <group
+    android:checkableBehavior="single">
+
+    <item
+        android:id="@+id/nav_all_coins"
+        android:title="@string/menu_all_coins"
+        android:icon="@drawable/ic_home"/>
+
+    <item
+        android:id="@+id/nav_favorite_coins"
+        android:title="@string/menu_favorite_coins"
+        android:icon="@drawable/ic_favorite"/>
+
+    <item
+        android:id="@+id/nav_portfolio"
+        android:title="@string/menu_portfolio"
+        android:icon="@drawable/ic_portfolio"/>
+
+    <item
+        android:id="@+id/nav_news"
+        android:title="@string/menu_news"
+        android:icon="@drawable/ic_news"/>
+    
+    <item
+        android:id="@+id/nav_global_data"
+        android:title="@string/menu_global_data"
+        android:icon="@drawable/ic_global"/>
+
+  </group>
+
+  <group
+      android:checkableBehavior="none">
+
+    <!--
+    <item
+        android:id="@+id/nav_remove_ads"
+        android:title="@string/menu_remove_ads"
+        android:icon="@drawable/ic_remove"/> -->
+
+    <item
+        android:id="@+id/nav_rate"
+        android:title="@string/menu_rate"
+        android:icon="@drawable/ic_rate_on_play_store"/>
+
+    <item
+        android:id="@+id/nav_send_feedback"
+        android:title="@string/menu_send_feedback"
+        android:icon="@drawable/ic_send"/>
+
+    <item
+        android:id="@+id/nav_about"
+        android:title="@string/menu_about"
+        android:icon="@drawable/ic_info"/>
+
+    <!--
+        <item
+            android:id="@+id/nav_settings"
+            android:title="@string/menu_settings"
+            android:icon="@drawable/ic_settings"/> -->
+
+  </group>
+
+</menu>

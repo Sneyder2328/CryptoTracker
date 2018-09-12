@@ -1,0 +1,231 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'io.fabric'
+
+apply plugin: 'kotlin-kapt'
+
+repositories {
+  jcenter()
+  mavenCentral()
+  maven { url 'https://maven.fabric.io/public' }
+}
+
+buildscript {
+  repositories {
+    jcenter()
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+    maven { url 'https://maven.fabric.io/public' }
+  }
+  dependencies {
+    classpath 'io.fabric.tools:gradle:1.25.4'
+  }
+}
+
+kotlin {
+  experimental {
+    coroutines "enable"
+  }
+}
+
+android {
+  dexOptions {
+    incremental true
+  }
+  /*
+    * By default JUnit unit tests generate both HTML and XML reports every time you execute your app unit tests,
+    * in order to disable simply set these flags to false.
+    */
+  testOptions.unitTests.all {
+    reports.html.enabled = false
+    reports.junitXml.enabled = false
+  }
+  signingConfigs {
+    release {
+      keyAlias project.key_alias
+      keyPassword project.key_password
+      storeFile file(project.store_file)
+      storePassword project.store_password
+    }
+  }
+  compileSdkVersion 28
+  defaultConfig {
+    applicationId "com.sneyder.cryptotracker"
+    minSdkVersion 15
+    targetSdkVersion 28
+    versionCode 5
+    versionName "1.0.3"
+    buildConfigField "String", "APP_VERSION", "\"1.0.2\""
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    multiDexEnabled = true
+    vectorDrawables.useSupportLibrary = true
+    javaCompileOptions {
+      annotationProcessorOptions {
+        // Good practice to save room database schemes
+        arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+      }
+    }
+    resValue "string", "facebook_app_id", "$facebook_app_id"
+    resValue "string", "fb_login_protocol_scheme", "$fb_login_protocol_scheme"
+    resValue "string", "server_client_id", "$server_client_id"
+    resValue "string", "google_adUnitId", "$google_adUnitId"
+    resValue "string", "id_admob", "$id_admob"
+    resValue "string", "amazon_ads_app_key", "$amazon_ads_app_key"
+  }
+  buildTypes {
+    debug {
+      testCoverageEnabled = "true"
+      minifyEnabled false
+      useProguard false
+      versionNameSuffix '-DEBUG'
+    }
+    release {
+      shrinkResources true
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+      signingConfig signingConfigs.release
+
+    }
+  }
+  androidExtensions {
+    experimental = true
+  }
+  // Test Android jar comes with unimplemented methods that throw exceptions by default. This
+  // option forces the methods to return default values instead. Required for static methods,
+  // such as TextUtils, as those cannot be mocked with Mockito.
+  // Refer http://tools.android.com/tech-docs/unit-testing-support#TOC-Method-...-not-mocked.-
+  testOptions {
+    unitTests.returnDefaultValues = true
+  }
+  packagingOptions {
+    exclude 'META-INF/rxjava.properties'
+  }
+  sourceSets {
+    debug.java.srcDirs += 'src/debug/java'
+    release.java.srcDirs += 'src/release/java'
+    androidTest.java.srcDirs += 'src/androidTest/java'
+    test.java.srcDirs += 'src/commonTest/java'
+  }
+}
+
+dependencies {
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+  // Utils library
+  api files("libs/utils-debug.aar")
+
+  // Kotlin
+  implementation deps.kotlin_stdlib
+  implementation deps.coroutines_core
+  implementation deps.coroutines_android
+
+  // Kotlin Android extensions
+  implementation deps.android_ktx
+
+  // Support library
+  implementation deps.app_compat
+  implementation deps.design
+  implementation deps.recyclerview
+  implementation deps.exifinterface
+  implementation deps.multidex
+  implementation deps.cardview
+  implementation deps.constraint_layout
+  implementation deps.support_v4
+  implementation deps.vector_drawable
+  implementation deps.customtabs
+
+  // Facebook login SDK
+  implementation deps.facebook
+
+  // Retrofit 2
+  implementation deps.retrofit2
+  implementation deps.converter_gson
+  implementation deps.adapter_rxjava2
+
+  // Architecture components (Lifecycles, LiveData, and ViewModel)
+  implementation deps.lifecycle_runtime
+  implementation deps.lifecycle_extensions
+  implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+  kapt deps.lifecycle_compiler
+
+  // WorkManager
+  implementation deps.work_runtime
+  implementation deps.work_firebase
+  implementation deps.work_runtime_ktx
+
+  // Room
+  implementation deps.room_runtime
+  kapt deps.room_compiler
+  // Room RxJava2 support
+  implementation deps.room_rxjava2
+
+  // Amazon ads
+  implementation files('libs/amazon-ads-5.9.0.jar')
+
+  // Firebase ads
+  implementation deps.firebase_ads
+
+  // Firebase messaging service
+  implementation deps.firebase_messaging
+
+  // Fabric crashlytics
+  releaseImplementation(deps.crashlytics) { transitive = true }
+
+  // Google Play Services Auth
+  implementation deps.play_services_auth
+  implementation deps.firebase_core
+
+  // Gson
+  implementation deps.gson
+
+  // rxJava2, rxAndroid2 and rxKotlin
+  implementation deps.rxjava
+  implementation deps.rxandroid
+  implementation deps.rxkotlin
+
+  // Dagger
+  implementation deps.dagger
+  implementation deps.dagger_android_support
+  kapt deps.dagger_compiler
+  kapt deps.dagger_android_processor
+
+  // Timber(logger)
+  implementation deps.timber
+
+  // Picasso
+  implementation deps.picasso
+
+  // Test dependencies
+  testImplementation deps.junit
+  androidTestImplementation deps.test_runner
+  testImplementation deps.mockito_core
+  testImplementation deps.mockito_kotlin
+  testAnnotationProcessor deps.dagger_compiler
+  testImplementation(deps.arch_core_testing, {
+    exclude group: 'com.android.support', module: 'support-compat'
+    exclude group: 'com.android.support', module: 'support-annotations'
+    exclude group: 'com.android.support', module: 'support-core-utils'
+  })
+  // RxJava/OkHttp localhost server testing
+  testImplementation deps.mockwebserver
+
+  // Espresso UI Testing
+  androidTestImplementation deps.espresso_core
+  androidTestImplementation deps.espresso_intents
+  androidTestImplementation deps.espresso_idling_concurrent
+  androidTestImplementation deps.work_testing
+  implementation deps.espresso_idling_resource
+  androidTestImplementation(deps.espresso_contrib) {
+    exclude group: 'com.android.support', module: 'support-annotations'
+    exclude group: 'com.android.support', module: 'support-v4'
+    exclude group: 'com.android.support', module: 'design'
+    exclude group: 'com.android.support', module: 'recyclerview-v7'
+  }
+  androidTestAnnotationProcessor deps.dagger_compiler
+}
+
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.sneyder.cryptotracker">
+
+  <uses-feature
+      android:name="android.hardware.location"
+      android:required="false" />
+  <uses-feature
+      android:name="android.hardware.location.gps"
+      android:required="false" />
+  <uses-feature
+      android:name="android.hardware.location.network"
+      android:required="false" />
+  <uses-feature
+      android:name="android.hardware.telephony"
+      android:required="false" />
+
+  <supports-screens android:smallScreens="true" />
+  <supports-screens android:normalScreens="true" />
+  <supports-screens android:largeScreens="true" />
+  <supports-screens android:xlargeScreens="true" />
+  <supports-screens android:anyDensity="true" />
+
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.INTERNET" />
+
+  <application
+      android:name=".CryptoTrackerApp"
+      android:allowBackup="true"
+      android:icon="@mipmap/ic_launcher"
+      android:label="@string/app_name"
+      android:roundIcon="@mipmap/ic_launcher_round"
+      android:supportsRtl="true"
+      android:theme="@style/AppTheme">
+    <activity
+        android:name=".ui.main.MainActivity"
+        android:theme="@style/AppTheme.Main.NoActionBar">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+
+    <meta-data
+        android:name="io.fabric.ApiKey"
+        android:value="93e9f12201ebc50c3a88a5b6914799556a228bfd" />
+
+    <activity
+        android:name=".ui.currencyDetails.CurrencyDetailsActivity"
+        android:theme="@style/AppTheme.Light.NoActionBar" />
+
+    <service android:name=".data.service.AppFirebaseMessagingService"
+        android:exported="false">
+      <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT" />
+      </intent-filter>
+    </service>
+
+    <!-- Necessary for Facebook login SDK -->
+    <meta-data
+        android:name="com.facebook.sdk.ApplicationId"
+        android:value="@string/facebook_app_id" />
+
+    <activity
+        android:name="com.facebook.FacebookActivity"
+        android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+        android:label="@string/app_name" />
+    <activity
+        android:name="com.facebook.CustomTabActivity"
+        android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data android:scheme="@string/fb_login_protocol_scheme" />
+      </intent-filter>
+    </activity>
+    <activity
+        android:name=".ui.login.LogInActivity"
+        android:label="@string/log_in_label" />
+    <activity
+        android:name=".ui.signup.SignUpActivity"
+        android:label="@string/sign_up_label" />
+    <activity
+        android:name=".ui.addTransaction.AddTransactionActivity"
+        android:label="@string/add_transaction_label" />
+    <activity
+        android:name=".ui.currencySelector.CurrencySelectorActivity"
+        android:label="@string/select_currency_label" />
+    <activity
+        android:name=".ui.transactionsByPairDetails.TransactionsByPairDetailsActivity"
+        android:label="@string/details_label" />
+    <activity
+        android:name="com.amazon.device.ads.AdActivity"
+        android:configChanges="keyboardHidden|orientation|screenSize" />
+
+    <activity
+        android:name=".ui.about.AboutActivity"
+        android:label="@string/about_label"/>
+  </application>
+
+</manifest>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/selectableItemBackground"
+    android:padding="8dp">
+
+  <ImageView
+      android:id="@+id/symbolImageView"
+      android:layout_width="0dp"
+      app:layout_constraintWidth_percent="0.085"
+      android:layout_height="0dp"
+      android:adjustViewBounds="true"
+      android:src="@mipmap/ic_launcher"
+      app:layout_constraintHorizontal_chainStyle="spread_inside"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/nameTextView"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintDimensionRatio="h,1:1"
+      tools:ignore="ContentDescription" />
+
+  <TextView
+      android:id="@+id/nameTextView"
+      android:layout_width="0dp"
+      app:layout_constraintWidth_percent="0.905"
+      android:layout_height="wrap_content"
+      android:paddingLeft="8dp"
+      android:textColor="#393939"
+      android:maxLines="1"
+      android:textSize="15sp"
+      tools:text="Bitcoin(BTC)"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintStart_toEndOf="@id/symbolImageView"
+      app:layout_constraintEnd_toEndOf="parent"
+      tools:ignore="MissingPrefix,RtlHardcoded,RtlSymmetry" />
+
+
+</android.support.constraint.ConstraintLayout>

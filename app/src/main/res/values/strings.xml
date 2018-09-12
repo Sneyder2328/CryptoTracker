@@ -1,0 +1,245 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="app_name">Crypto Tracker</string>
+  <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+  <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+  <string name="percentage_change_last_1h_format">Change 1h:\n %s%%</string>
+  <string name="percentage_change_last_24h_format">Change 24h:\n %s%%</string>
+  <string name="percentage_change_last_7d_format">Change 7d:\n %s%%</string>
+
+  <string name="currencies_name_format">%1$s (%2$s)</string>
+  <string name="currencies_price_format">%1$s%2$s</string>
+  <string name="currencies_percentage_change_format">%s%%</string>
+  <string name="currencies_market_cap_format">Market Cap: %s%,d</string>
+
+  <string name="currency_details_coin_title">%1$s | %2$s</string>
+  <string name="currency_details_price_format">%s%,.2f</string>
+  <string name="currency_details_market_cap_format">%s%,d</string>
+  <string name="currency_details_volume_format">%s%,d</string>
+  <string name="currency_details_circulating_supply_format">%,d %s</string>
+  <string name="currency_details_max_supply_format">%,d %s</string>
+  <string name="currency_details_market_cap">Market Cap</string>
+  <string name="currency_details_volume">Volume last 24h</string>
+  <string name="currency_details_circulating_supply">Circulating Supply</string>
+  <string name="currency_details_max_supply">Max Supply</string>
+  <string name="currency_details_price_alerts">Price alerts for</string>
+  <string name="currency_details_no_price_alerts">There are no price alerts set for %s\'s price</string>
+  <string name="currency_details_add_price_alert">Add price alert</string>
+
+  <string name="notification_title_price_alert">Price alert triggered for %s\'s price</string>
+
+  <string name="crypto_currencies_error_fetching_data">Error fetching data from the server</string>
+
+
+  <string name="main_last_updated_now">Now</string>
+  <plurals name="main_last_updated_minutes_ago">
+    <item quantity="one">%d minute ago.</item>
+    <item quantity="other">%d minutes ago.</item>
+  </plurals>
+  <plurals name="main_last_updated_hours_ago">
+    <item quantity="one">%d hour ago.</item>
+    <item quantity="other">%d hours ago.</item>
+  </plurals>
+  <plurals name="main_last_updated_days_ago">
+    <item quantity="one">%d day ago.</item>
+    <item quantity="other">%d days ago.</item>
+  </plurals>
+
+  <string name="menu_all_coins">All coins</string>
+  <string name="menu_portfolio">Portfolio</string>
+  <string name="menu_favorite_coins">Favorites</string>
+  <string name="menu_news">News</string>
+  <string name="menu_remove_ads">Remove ads</string>
+  <string name="menu_rate">Rate</string>
+  <string name="menu_send_feedback">Send feedback</string>
+  <string name="menu_settings">Settings</string>
+  <string name="main_sort_by">Sort by</string>
+  <string name="menu_global_data">Global data</string>
+  <string-array name="main_sort_by">
+    <item>Market Cap(DESC)</item>
+    <item>Name(DESC)</item>
+    <item>Price(DESC)</item>
+    <item>Change(DESC)</item>
+    <item>Volume 24H(DESC)</item>
+    <item>Market Cap(ASC)</item>
+    <item>Name(ASC)</item>
+    <item>Price(ASC)</item>
+    <item>Change(ASC)</item>
+    <item>Volume 24H(ASC)</item>
+  </string-array>
+  <string-array name="main_percent_change_list">
+    <item>1H</item>
+    <item>24H</item>
+    <item>7D</item>
+  </string-array>
+  <string-array name="main_currencies_list">
+    <item>USD</item>
+    <item>BTC</item>
+    <item>ETH</item>
+    <item>AUD</item>
+    <item>BRL</item>
+    <item>CAD</item>
+    <item>CHF</item>
+    <item>CLP</item>
+    <item>CNY</item>
+    <item>CZK</item>
+    <item>DKK</item>
+    <item>EUR</item>
+    <item>GBP</item>
+    <item>HKD</item>
+    <item>HUF</item>
+    <item>IDR</item>
+    <item>ILS</item>
+    <item>JPY</item>
+    <item>KRW</item>
+    <item>MXN</item>
+    <item>MYR</item>
+    <item>NOK</item>
+    <item>NZD</item>
+    <item>PHP</item>
+    <item>PKR</item>
+    <item>PLN</item>
+    <item>RUB</item>
+    <item>SEK</item>
+    <item>SGD</item>
+    <item>THB</item>
+    <item>TRY</item>
+    <item>TWD</item>
+    <item>ZAR</item>
+  </string-array>
+
+
+  <string-array name="portfolio_fiat_currencies_list">
+    <item>USD</item>
+    <item>AUD</item>
+    <item>BRL</item>
+    <item>CAD</item>
+    <item>CHF</item>
+    <item>CLP</item>
+    <item>CNY</item>
+    <item>CZK</item>
+    <item>DKK</item>
+    <item>EUR</item>
+    <item>GBP</item>
+    <item>HKD</item>
+    <item>HUF</item>
+    <item>IDR</item>
+    <item>ILS</item>
+    <item>JPY</item>
+    <item>KRW</item>
+    <item>MXN</item>
+    <item>MYR</item>
+    <item>NOK</item>
+    <item>NZD</item>
+    <item>PHP</item>
+    <item>PKR</item>
+    <item>PLN</item>
+    <item>RUB</item>
+    <item>SEK</item>
+    <item>SGD</item>
+    <item>THB</item>
+    <item>TRY</item>
+    <item>TWD</item>
+    <item>ZAR</item>
+  </string-array>
+
+  <string name="global_data_market_cap_format">%s%,d</string>
+  <string name="global_data_volume_format">%s%,d</string>
+  <string name="global_data_dominance_format">%s%%</string>
+  <string name="global_data_active_currencies_format">%s</string>
+  <string name="global_data_last_updated_format">Last updated: %s</string>
+
+
+  <string name="global_data_market_cap_label">Total market cap</string>
+  <string name="global_data_volume_label">Total 24h volume</string>
+  <string name="global_data_dominance_label">Bitcoin dominance</string>
+  <string name="global_data_active_currencies_label">Active cryptocurrencies</string>
+  <string name="global_data_active_assets_label">Active assets</string>
+  <string name="global_data_active_markets_label">Active markets</string>
+  <string name="main_header_button_log_in">Log in</string>
+  <string name="main_header_button_sign_up">Sign up</string>
+  <string name="main_header_label_logged_in">Logged in as: %s</string>
+
+
+  <string name="sign_up_continue_with_facebook">Continue with Facebook</string>
+  <string name="sign_up_continue_with_google">Continue with Google</string>
+  <string name="sign_up_label_or">or</string>
+  <string name="sign_up_hint_user_name">User name</string>
+  <string name="sign_up_hint_email">Email</string>
+  <string name="sign_up_hint_password">Password</string>
+  <string name="sign_up_sign_up_via_email">Sign up via Email</string>
+  <string name="sign_up_accept_terms">By sign up you accept our <a href="https://sneyder.net/CryptoTracker/privacyPolicy.html">privacy policy</a> and <a href="https://sneyder.net/CryptoTracker/termsOfUse.html">terms of use</a></string>
+  <string name="sign_up_label">Sign Up</string>
+  <string name="log_in_label">Log In</string>
+  <string name="log_in_sign_in_with_email">Sign in with Email</string>
+  <string name="log_in_not_account_yet">Don\'t have an account yet?</string>
+  <string name="log_in_sign_up">Sign up</string>
+  <string name="login_warning_invalid_email">You must insert a valid email address</string>
+  <string name="login_warning_missing_password">You must insert a valid password</string>
+  <string name="login_message_error_loggin_in">There was an error logging in the server</string>
+  <string name="signup_message_unable_google_login">Unable to log in with Google</string>
+  <string name="sign_up_message_error_singing_up">There was an error signing up in the server</string>
+  <string name="sign_up_warning_missing_username">You must enter your username</string>
+  <string name="sign_up_warning_missing_email">You must enter a valid email</string>
+  <string name="sign_up_warning_missing_password">You must enter a password</string>
+  <string name="add_transaction_label">Add transaction</string>
+  <string name="edit_transaction_label">Edit transaction</string>
+  <string name="select_currency_label">Select the currency</string>
+  <string name="add_transaction_label_trading_pair">Trading pair</string>
+  <string name="add_transaction_label_quantity_bought">Quantity bought</string>
+  <string name="add_transaction_label_quantity_sold">Quantity sold</string>
+  <string name="add_transaction_label_total_cost">Total cost</string>
+  <string name="add_transaction_button_save">save</string>
+  <string name="add_transaction_label_current_price">Current price</string>
+  <string name="add_transaction_buy">Buy</string>
+  <string name="add_transaction_sell">Sell</string>
+  <string name="add_transaction_format_amount">%1$s %2$s</string>
+  <string name="add_transaction_label_buy_price">Buy price</string>
+  <string name="add_transaction_label_sell_price">Sell price</string>
+  <string name="add_transaction_label_buy_date">Buy date</string>
+  <string name="add_transaction_label_sell_date">Sell date</string>
+  <string name="add_transaction_enter_quantity">Please enter a valid quantity</string>
+  <string name="add_transaction_apply_fee">Apply fee</string>
+  <string name="add_transaction_format_crypto_received">Total %s received</string>
+  <string name="add_transaction_format_crypto_sold">Total %s sold</string>
+  <string name="portfolio_label_coin">Coin</string>
+  <string name="portfolio_label_holdings">Holdings</string>
+  <string name="portfolio_label_price_profits">Price-Profits</string>
+  <string name="portfolio_holdings_value_format">%1$s %2$s</string>
+  <string name="portfolio_item_value_format">%1$s%2$s</string>
+  <string name="portfolio_item_price_format">%1$s%2$s</string>
+  <string name="portfolio_item_quantity_format">%1$s %2$s</string>
+  <string name="details_label">Details</string>
+  <string name="transactions_by_pair_holdings">Holdings</string>
+  <string name="transactions_by_pair_total_profits">Total profits</string>
+  <string name="transactions_by_pair_units">Units</string>
+  <string name="transactions_by_pair_price">Price</string>
+  <string name="transactions_by_pair_invested">Invested</string>
+  <string name="transactions_by_pair_profits">Profits</string>
+  <string name="transactions_by_pair_date_format">Date: %s</string>
+  <string name="transactions_by_pair_price_format">1 %1$s = %2$s%3$s</string>
+  <string name="transactions_by_pair_holdings_value_format">%1$s%2$s</string>
+  <string name="transactions_by_pair_holdings_quantity_format">%1$s %2$s</string>
+  <string name="transactions_by_pair_item_fee_format">Fee: %1$s%%</string>
+  <string name="menu_delete">Delete</string>
+  <string name="transactions_by_pair_insert_price">Insert currency price</string>
+  <string name="portfolio_select_currency">Select currency</string>
+  <string name="currency_details_price_above">Price above</string>
+  <string name="currency_details_price_below">Price below</string>
+  <string name="log_in_dialog_loading_message">Logging in &#8230;</string>
+  <string name="log_in_dialog_loading_title">Loading &#8230;</string>
+  <string name="menu_action_search">Search</string>
+  <string name="menu_action_log_out">Log out</string>
+  <string name="sign_up_dialog_loading_message">Signing up &#8230;</string>
+  <string name="sign_up_dialog_loading_title">Loading up &#8230;</string>
+  <string name="menu_about">About</string>
+  <string name="about_label">About</string>
+  <string name="about_open_source_licenses">Open source licenses</string>
+  <string name="about_licenses_plain_text">Live data from CoinMarketCap(https://coinmarketcap.com/)
+    \nPicasso(https://github.com/square/picasso)
+    \nRxJava(https://github.com/ReactiveX/RxJava)
+    \nDagger(https://github.com/google/dagger)
+    \nCryptoCurrency icons from https://github.com/condacore/cryptocurrency-icons
+    \nTimber(https://github.com/JakeWharton/timber)
+    \nGson(https://github.com/google/gson)</string>
+
+</resources>

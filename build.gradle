@@ -1,0 +1,161 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.2.61'
+    ext.kotlinx_coroutines_version = '0.22.5'
+    ext {
+        support_library_version = '27.0.2'
+        constrain_layout_version = '1.1.0'
+        dagger_version = '2.17'
+        retrofit2_version = '2.3.0'
+        gson_version = '2.8.0'
+        glide_version = '4.3.1'
+        rxandroid2_version = '2.0.1'
+        rxjava2_version = '2.1.3'
+        rxlint_version = '1.6'
+        junit_version = '4.12'
+        mockito_version = '2.7.1'
+        espresso_version = "3.0.1"
+        architecture_components_version = "1.0.0"
+        lifecycle_version = "1.1.1"
+        room_version = "1.1.1"
+        work_version = "1.0.0-alpha05"
+        timber_version = '4.6.0'
+        play_services_version = '12.0.1'
+        android_job_version = "1.2.5"
+        leak_canary_version = "1.5.4"
+        okhttp_version = "3.8.0"
+    }
+    ext.deps = [
+            // Kotlin
+            "kotlin_stdlib" : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version",
+            "coroutines_core" : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version",
+            "coroutines_android" : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_coroutines_version",
+
+            // Support library
+            "app_compat" : "com.android.support:appcompat-v7:$support_library_version",
+            "design" : "com.android.support:design:$support_library_version",
+            "customtabs" : "com.android.support:customtabs:$support_library_version",
+            "recyclerview" : "com.android.support:recyclerview-v7:$support_library_version",
+            "exifinterface" : "com.android.support:exifinterface:$support_library_version",
+            "multidex" : "com.android.support:multidex:1.0.2",
+            "cardview" : "com.android.support:cardview-v7:$support_library_version",
+            "constraint_layout" : "com.android.support.constraint:constraint-layout:$constrain_layout_version",
+            "support_v4" : "com.android.support:support-v4:$support_library_version",
+            "vector_drawable" : "com.android.support:support-vector-drawable:$support_library_version",
+
+            // Kotlin Android extensions
+            "android_ktx" : "androidx.core:core-ktx:0.1",
+
+            // Retrofit 2
+            "retrofit2" : "com.squareup.retrofit2:retrofit:$retrofit2_version",
+            "converter_gson" : "com.squareup.retrofit2:converter-gson:$retrofit2_version",
+            "adapter_rxjava2" : "com.squareup.retrofit2:adapter-rxjava2:$retrofit2_version",
+
+            // rxJava, rxAndroid and rxKotlin
+            "rxjava" : "io.reactivex.rxjava2:rxjava:$rxjava2_version",
+            "rxandroid" : "io.reactivex.rxjava2:rxandroid:$rxandroid2_version",
+            "rxkotlin" : "io.reactivex.rxjava2:rxkotlin:2.1.0",
+
+            // Architecture lifecycle components
+            "lifecycle_runtime" : "android.arch.lifecycle:runtime:$lifecycle_version",
+            "lifecycle_extensions" : "android.arch.lifecycle:extensions:$lifecycle_version",
+            "lifecycle_compiler" : "android.arch.lifecycle:compiler:$lifecycle_version",
+
+            // Room
+            "room_runtime" : "android.arch.persistence.room:runtime:$room_version",
+            "room_compiler" : "android.arch.persistence.room:compiler:$room_version",
+            "room_rxjava2" : "android.arch.persistence.room:rxjava2:$room_version",
+
+            // WorkManager
+            "work_runtime" : "android.arch.work:work-runtime:$work_version",
+            "work_firebase" : "android.arch.work:work-firebase:$work_version",
+            "work_testing" : "android.arch.work:work-testing:$work_version",
+            "work_runtime_ktx" : "android.arch.work:work-runtime-ktx:$work_version",
+
+            // Gson
+            "gson" : "com.google.code.gson:gson:$gson_version",
+
+            // Dagger
+            "dagger" : "com.google.dagger:dagger:$dagger_version",
+            "dagger_android_support" : "com.google.dagger:dagger-android-support:$dagger_version",
+            "dagger_compiler" : "com.google.dagger:dagger-compiler:$dagger_version",
+            "dagger_android_processor" : "com.google.dagger:dagger-android-processor:$dagger_version",
+
+            // Timber
+            "timber" : "com.jakewharton.timber:timber:$timber_version",
+
+            // Picasso
+            "picasso" : "com.squareup.picasso:picasso:2.5.2",
+
+            // Google Play Services
+            "play_services_auth" : "com.google.android.gms:play-services-auth:$play_services_version",
+            "play_services_gcm" : "com.google.android.gms:play-services-gcm:$play_services_version",
+
+            // Firebase
+            "firebase_core" : "com.google.firebase:firebase-core:$play_services_version",
+            "firebase_ads" : "com.google.firebase:firebase-ads:$play_services_version",
+            "firebase_analytics" : "com.google.firebase:firebase-analytics:$play_services_version",
+            "firebase_messaging" : "com.google.firebase:firebase-messaging:$play_services_version",
+
+            // Android Job(by Evernote)
+            "android_job" : "com.evernote:android-job:$android_job_version",
+
+            // Fotoapparat(Photo taking library)
+            "fotoapparat" : "io.fotoapparat.fotoapparat:library:2.1.2",
+
+            // Leakcanary
+            "leakcanary" : "com.squareup.leakcanary:leakcanary-android:$leak_canary_version",
+            "leakcanary_no_op" : "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version",
+
+            // Testing
+            "test_runner" : "com.android.support.test:runner:1.0.1",
+            "junit" : "junit:junit:$junit_version",
+            "espresso_idling_resource" : "com.android.support.test.espresso:espresso-idling-resource:$espresso_version",
+            "espresso_core" : "com.android.support.test.espresso:espresso-core:$espresso_version",
+            "espresso_intents" : "com.android.support.test.espresso:espresso-intents:$espresso_version",
+            "espresso_idling_concurrent" : "com.android.support.test.espresso.idling:idling-concurrent:$espresso_version",
+            "espresso_contrib" : "com.android.support.test.espresso:espresso-contrib:$espresso_version",
+            "arch_core_testing" : "android.arch.core:core-testing:$architecture_components_version",
+            "mockito_core" : "org.mockito:mockito-core:2.13.0",
+            "mockito_kotlin" : "com.nhaarman:mockito-kotlin:1.5.0",
+
+            // RxJava/OkHttp localhost server testing
+            "mockwebserver" : "com.squareup.okhttp3:mockwebserver:$okhttp_version",
+
+            // Crashlytics
+            "crashlytics" : "com.crashlytics.sdk.android:crashlytics:2.7.1@aar",
+
+            // Facebook
+            "facebook" : "com.facebook.android:facebook-android-sdk:4.+",
+
+            // Aws
+            "aws_mobile_client" : "com.amazonaws:aws-android-sdk-mobile-client:2.6.7@aar",
+            "aws_s3" : "com.amazonaws:aws-android-sdk-s3:2.6.7",
+            "aws_cognito" : "com.amazonaws:aws-android-sdk-cognito:2.6.7"
+    ]
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:3.2.1'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        maven { url 'https://jitpack.io' }
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

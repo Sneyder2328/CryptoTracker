@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="?attr/selectableItemBackground"
+    android:padding="8dp">
+
+  <ImageView
+      android:id="@+id/symbolImageView"
+      android:layout_width="22dp"
+      android:layout_height="22dp"
+      android:adjustViewBounds="true"
+      android:src="@mipmap/ic_launcher"
+      app:layout_constraintHorizontal_chainStyle="spread_inside"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toStartOf="@+id/guide20"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintDimensionRatio="w,1:1"
+      tools:ignore="ContentDescription" />
+
+  <TextView
+      android:id="@+id/tradingPairTextView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:textSize="16sp"
+      android:layout_marginTop="4dp"
+      android:textColor="@color/secondary_text_color"
+      app:layout_constraintTop_toBottomOf="@id/symbolImageView"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toStartOf="@id/guide20"
+      tools:text="BTC/USD"/>
+
+  <android.support.constraint.Guideline
+      android:id="@+id/guide20"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.2"/>
+
+
+  <android.support.constraint.Guideline
+      android:id="@+id/guide33"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.33"/>
+
+
+  <android.support.constraint.Guideline
+      android:id="@+id/guide66"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      app:layout_constraintGuide_percent="0.66"/>
+
+  <TextView
+      android:id="@+id/valueTextView"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:textSize="16sp"
+      android:textColor="@color/secondary_text_color"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toEndOf="@id/guide33"
+      app:layout_constraintEnd_toStartOf="@id/guide66"
+      tools:text="$640.72"/>
+
+  <TextView
+      android:id="@+id/quantityTextView"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:textSize="16sp"
+      android:layout_marginTop="4dp"
+      android:textColor="@color/secondary_text_color"
+      app:layout_constraintTop_toBottomOf="@id/valueTextView"
+      app:layout_constraintStart_toEndOf="@id/guide33"
+      app:layout_constraintEnd_toStartOf="@id/guide66"
+      tools:text="0.1 BTC"/>
+
+  <TextView
+      android:id="@+id/priceTextView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="end"
+      android:textSize="16sp"
+      android:layout_marginRight="12dp"
+      android:textColor="@color/secondary_text_color"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      tools:text="$6,405.26"
+      tools:ignore="RtlHardcoded" />
+
+  <TextView
+      android:id="@+id/profitsTextView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="end"
+      android:textSize="16sp"
+      android:layout_marginRight="12dp"
+      android:layout_marginTop="4dp"
+      android:textColor="@color/secondary_text_color"
+      app:layout_constraintTop_toBottomOf="@id/priceTextView"
+      app:layout_constraintEnd_toEndOf="parent"
+      tools:text="+$54.12"
+      tools:ignore="RtlHardcoded" />
+
+
+
+</android.support.constraint.ConstraintLayout>

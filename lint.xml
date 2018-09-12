@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+  <!-- Ignore missing ContentDescription -->
+  <issue id="ContentDescription" severity="ignore" />
+
+  <!-- Change the severity of hardcoded strings to "error" -->
+  <issue id="HardcodedText" severity="error" />
+</lint>
