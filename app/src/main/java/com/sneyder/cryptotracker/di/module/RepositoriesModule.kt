@@ -17,27 +17,27 @@
 package com.sneyder.cryptotracker.di.module
 
 import com.sneyder.cryptotracker.data.repository.*
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-class RepositoriesModule {
+abstract class RepositoriesModule {
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideCryptoCurrenciesRepository(appCryptoCurrenciesRepository: AppCryptoCurrenciesRepository): CryptoCurrenciesRepository = appCryptoCurrenciesRepository
+    abstract fun provideCryptoCurrenciesRepository(appCryptoCurrenciesRepository: AppCryptoCurrenciesRepository): CryptoCurrenciesRepository
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideGlobalDataRepository(appGlobalDataRepository: AppGlobalDataRepository): GlobalDataRepository = appGlobalDataRepository
+    abstract fun provideGlobalDataRepository(appGlobalDataRepository: AppGlobalDataRepository): GlobalDataRepository
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideNewsRepository(appNewsRepository: AppNewsRepository): NewsRepository = appNewsRepository
+    abstract fun provideNewsRepository(appNewsRepository: AppNewsRepository): NewsRepository
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideUserRepository(appUserRepository: AppUserRepository): UserRepository = appUserRepository
+    abstract fun provideUserRepository(appUserRepository: AppUserRepository): UserRepository
 
 }

@@ -23,18 +23,19 @@ import com.sneyder.cryptotracker.data.api.CryptoCurrenciesApi
 import com.sneyder.cryptotracker.data.api.Json
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-import javax.inject.Singleton
 
 @Module
-class RetrofitModule {
+object RetrofitModule {
 
     @Provides
-    @Singleton
+    @Reusable
+    @JvmStatic
     fun provideHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
                 .readTimeout(15, TimeUnit.SECONDS)
@@ -45,14 +46,16 @@ class RetrofitModule {
     }
 
     @Provides
-    @Singleton
+    @Reusable
+    @JvmStatic
     fun gson(): Gson = GsonBuilder()
             .setLenient()
             .excludeFieldsWithoutExposeAnnotation()
             .create()
 
     @Provides
-    @Singleton
+    @Reusable
+    @JvmStatic
     fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit = Retrofit.Builder()
             .baseUrl(CryptoCurrenciesApi.END_POINT)
             .client(okHttpClient)
@@ -63,7 +66,8 @@ class RetrofitModule {
             .build()
 
     @Provides
-    @Singleton
+    @Reusable
+    @JvmStatic
     fun provideCryptoCurrenciesApi(retrofit: Retrofit): CryptoCurrenciesApi = retrofit.create(CryptoCurrenciesApi::class.java)
 
 }

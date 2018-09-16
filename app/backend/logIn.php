@@ -42,7 +42,7 @@ if($email!="" && $verified==true){
             echo "wrong password";
         }
     }
-
+    $mysqli->close();
 }
 else {
     echo "missing arguments or invalid auth token";
