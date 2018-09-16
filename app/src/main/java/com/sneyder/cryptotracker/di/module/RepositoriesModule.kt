@@ -1,43 +1,27 @@
-/*
- * Copyright (C) 2018 Sneyder Angulo
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.sneyder.cryptotracker.di.module
 
 import com.sneyder.cryptotracker.data.repository.*
-import dagger.Binds
 import dagger.Module
+import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-abstract class RepositoriesModule {
+class RepositoriesModule {
 
-    @Binds
+    @Provides
     @Singleton
-    abstract fun provideCryptoCurrenciesRepository(appCryptoCurrenciesRepository: AppCryptoCurrenciesRepository): CryptoCurrenciesRepository
+    fun provideCryptoCurrenciesRepository(appCryptoCurrenciesRepository: AppCryptoCurrenciesRepository): CryptoCurrenciesRepository = appCryptoCurrenciesRepository
 
-    @Binds
+    @Provides
     @Singleton
-    abstract fun provideGlobalDataRepository(appGlobalDataRepository: AppGlobalDataRepository): GlobalDataRepository
+    fun provideGlobalDataRepository(appGlobalDataRepository: AppGlobalDataRepository): GlobalDataRepository = appGlobalDataRepository
 
-    @Binds
+    @Provides
     @Singleton
-    abstract fun provideNewsRepository(appNewsRepository: AppNewsRepository): NewsRepository
+    fun provideNewsRepository(appNewsRepository: AppNewsRepository): NewsRepository = appNewsRepository
 
-    @Binds
+    @Provides
     @Singleton
-    abstract fun provideUserRepository(appUserRepository: AppUserRepository): UserRepository
+    fun provideUserRepository(appUserRepository: AppUserRepository): UserRepository = appUserRepository
 
 }

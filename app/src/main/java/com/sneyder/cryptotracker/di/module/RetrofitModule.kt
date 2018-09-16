@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2018 Sneyder Angulo
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.sneyder.cryptotracker.di.module
 
 import com.google.gson.Gson
@@ -23,19 +7,18 @@ import com.sneyder.cryptotracker.data.api.CryptoCurrenciesApi
 import com.sneyder.cryptotracker.data.api.Json
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 @Module
-object RetrofitModule {
+class RetrofitModule {
 
     @Provides
-    @Reusable
-    @JvmStatic
+    @Singleton
     fun provideHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
                 .readTimeout(15, TimeUnit.SECONDS)
@@ -46,16 +29,14 @@ object RetrofitModule {
     }
 
     @Provides
-    @Reusable
-    @JvmStatic
+    @Singleton
     fun gson(): Gson = GsonBuilder()
             .setLenient()
             .excludeFieldsWithoutExposeAnnotation()
             .create()
 
     @Provides
-    @Reusable
-    @JvmStatic
+    @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit = Retrofit.Builder()
             .baseUrl(CryptoCurrenciesApi.END_POINT)
             .client(okHttpClient)
@@ -66,8 +47,7 @@ object RetrofitModule {
             .build()
 
     @Provides
-    @Reusable
-    @JvmStatic
+    @Singleton
     fun provideCryptoCurrenciesApi(retrofit: Retrofit): CryptoCurrenciesApi = retrofit.create(CryptoCurrenciesApi::class.java)
 
 }
