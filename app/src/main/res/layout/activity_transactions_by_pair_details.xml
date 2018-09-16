@@ -15,7 +15,8 @@
   ~ limitations under the License.
   -->
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -79,7 +80,7 @@
       app:layout_constraintTop_toBottomOf="@id/totalProfitsLabel"
       app:layout_constraintEnd_toEndOf="parent"/>
 
-  <android.support.constraint.ConstraintLayout
+  <androidx.constraintlayout.widget.ConstraintLayout
       android:id="@+id/labelsConstraintLayout"
       android:layout_width="0dp"
       android:layout_height="wrap_content"
@@ -147,10 +148,10 @@
         android:text="@string/transactions_by_pair_profits"
         tools:ignore="RtlSymmetry" />
 
-  </android.support.constraint.ConstraintLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-  <android.support.v7.widget.RecyclerView
+  <androidx.recyclerview.widget.RecyclerView
       android:id="@+id/transactionsRecyclerView"
       android:layout_width="match_parent"
       android:layout_height="0dp"
@@ -162,7 +163,7 @@
       app:layout_constraintEnd_toEndOf="parent"/>
 
 
-  <android.support.design.widget.FloatingActionButton
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
       android:id="@+id/addTransactionButton"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -172,4 +173,4 @@
       app:srcCompat="@android:drawable/ic_input_add"
       android:layout_margin="16dp"/>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

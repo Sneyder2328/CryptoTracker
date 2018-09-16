@@ -15,7 +15,7 @@
   ~ limitations under the License.
   -->
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
       app:layout_constraintEnd_toStartOf="@id/guide20"
       tools:text="BTC/USD"/>
 
-  <android.support.constraint.Guideline
+  <androidx.constraintlayout.widget.Guideline
       android:id="@+id/guide20"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
       app:layout_constraintGuide_percent="0.2"/>
 
 
-  <android.support.constraint.Guideline
+  <androidx.constraintlayout.widget.Guideline
       android:id="@+id/guide33"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
       app:layout_constraintGuide_percent="0.33"/>
 
 
-  <android.support.constraint.Guideline
+  <androidx.constraintlayout.widget.Guideline
       android:id="@+id/guide66"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
@@ -122,6 +122,4 @@
       tools:text="+$54.12"
       tools:ignore="RtlHardcoded" />
 
-
-
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

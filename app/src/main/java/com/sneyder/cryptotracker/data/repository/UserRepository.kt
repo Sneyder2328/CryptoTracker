@@ -16,7 +16,7 @@
 
 package com.sneyder.cryptotracker.data.repository
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import com.sneyder.cryptotracker.data.model.*
 import io.reactivex.Completable
 import io.reactivex.Flowable

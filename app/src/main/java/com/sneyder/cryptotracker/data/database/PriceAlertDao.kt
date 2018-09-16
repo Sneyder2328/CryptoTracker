@@ -16,7 +16,10 @@
 
 package com.sneyder.cryptotracker.data.database
 
-import android.arch.persistence.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.sneyder.cryptotracker.data.model.PriceAlert
 import com.sneyder.cryptotracker.data.model.SyncStatus
 import com.sneyder.utils.BaseDao

@@ -21,62 +21,52 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.sneyder.cryptotracker.data.hashGenerator.AppHasher
 import com.sneyder.cryptotracker.data.hashGenerator.Hasher
-import com.sneyder.cryptotracker.data.sync.TransactionsSynchronizer
 import com.sneyder.cryptotracker.data.preferences.AppPreferencesHelper
 import com.sneyder.cryptotracker.data.preferences.PreferencesHelper
-import com.sneyder.cryptotracker.data.repository.UserRepository
-import com.sneyder.cryptotracker.data.sync.FavoritesSynchronizer
-import com.sneyder.cryptotracker.data.sync.PriceAlertsSynchronizer
 import com.sneyder.cryptotracker.utils.AppCoroutineContextProvider
 import com.sneyder.cryptotracker.utils.CoroutineContextProvider
 import com.sneyder.utils.schedulers.AppSchedulerProvider
 import com.sneyder.utils.schedulers.SchedulerProvider
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import dagger.Reusable
 import defaultSharedPreferences
-import javax.inject.Singleton
 
 @Module(includes = [(ViewModelModule::class), (RepositoriesModule::class), (RoomDatabaseModule::class), (RetrofitModule::class)])
-class AppModule {
+abstract class AppModule {
 
-    @Provides
-    @Singleton
-    fun provideContext(application: Application): Context = application
+    @Binds
+    @Reusable
+    abstract fun provideContext(application: Application): Context
 
-    @Provides
-    @Singleton
-    fun provideSharedPreferences(context: Context): SharedPreferences = context.defaultSharedPreferences
+    @Binds
+    @Reusable
+    abstract fun providePreferencesHelper(appPreferencesHelper: AppPreferencesHelper): PreferencesHelper
 
-    @Provides
-    @Singleton
-    fun providePreferencesHelper(appPreferencesHelper: AppPreferencesHelper): PreferencesHelper = appPreferencesHelper
+    @Module
+    companion object {
 
-    @Provides
-    @Singleton
-    fun provideSchedulerProvider(): SchedulerProvider = AppSchedulerProvider()
+        @Provides
+        @Reusable
+        @JvmStatic
+        fun provideSharedPreferences(context: Context): SharedPreferences = context.defaultSharedPreferences
 
-    @Provides
-    @Singleton
-    fun provideCoroutineContextProvider(): CoroutineContextProvider = AppCoroutineContextProvider()
+        @Provides
+        @JvmStatic
+        @Reusable
+        fun provideSchedulerProvider(): SchedulerProvider = AppSchedulerProvider()
 
-    @Provides
-    @Singleton
-    fun provideHasher(): Hasher = AppHasher()
+        @Provides
+        @JvmStatic
+        @Reusable
+        fun provideCoroutineContextProvider(): CoroutineContextProvider = AppCoroutineContextProvider()
 
-    @Provides
-    @Singleton
-    fun providePriceAlertsSynchronizer(userRepository: UserRepository): PriceAlertsSynchronizer
-            = PriceAlertsSynchronizer(userRepository)
+        @Provides
+        @JvmStatic
+        @Reusable
+        fun provideHasher(): Hasher = AppHasher()
 
-    @Provides
-    @Singleton
-    fun provideFavoritesSynchronizer(userRepository: UserRepository): FavoritesSynchronizer
-            = FavoritesSynchronizer(userRepository)
-
-
-    @Provides
-    @Singleton
-    fun provideTransactionsSynchronizer(userRepository: UserRepository): TransactionsSynchronizer
-            = TransactionsSynchronizer(userRepository)
+    }
 
 }

@@ -16,7 +16,10 @@
 
 package com.sneyder.cryptotracker.data.model
 
-import android.arch.persistence.room.*
+import androidx.room.Entity
+import androidx.room.Index
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import generateUUID

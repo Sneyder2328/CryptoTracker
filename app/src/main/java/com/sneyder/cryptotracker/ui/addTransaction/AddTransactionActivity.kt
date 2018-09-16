@@ -18,7 +18,6 @@ package com.sneyder.cryptotracker.ui.addTransaction
 
 import addTextWatcher
 import android.annotation.SuppressLint
-import android.arch.lifecycle.Observer
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle

@@ -22,8 +22,9 @@ import com.sneyder.cryptotracker.data.repository.UserRepository
 import debug
 import error
 import showValues
+import javax.inject.Inject
 
-class PriceAlertsSynchronizer(
+class PriceAlertsSynchronizer @Inject constructor(
         private val userRepository: UserRepository) {
 
     fun synchronizePriceAlertsWithServer() {

@@ -15,7 +15,7 @@
   ~ limitations under the License.
   -->
 
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -24,7 +24,7 @@
     tools:context=".ui.globalData.GlobalDataFragment">
 
 
-  <android.support.v7.widget.AppCompatTextView
+  <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/totalMarketCapLabel"
       android:layout_width="0dp"
       app:layout_constraintWidth_percent="0.5"
@@ -37,7 +37,7 @@
       android:background="@color/background_row_blue"
       android:text="@string/global_data_market_cap_label" />
 
-  <android.support.v7.widget.AppCompatTextView
+  <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/totalMarketCapTextView"
       android:layout_width="0dp"
       app:layout_constraintWidth_percent="0.5"
@@ -52,7 +52,7 @@
       tools:text="$26036565601245654645" />
 
 
-  <android.support.v7.widget.AppCompatTextView
+  <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/total24HVolumeLabel"
       android:layout_width="0dp"
       app:layout_constraintWidth_percent="0.5"
@@ -64,7 +64,7 @@
       android:gravity="start"
       android:text="@string/global_data_volume_label"/>
 
-  <android.support.v7.widget.AppCompatTextView
+  <androidx.appcompat.widget.AppCompatTextView
       android:id="@+id/total24HVolumeTextView"
       android:layout_width="0dp"
       app:layout_constraintWidth_percent="0.5"
@@ -158,4 +158,4 @@
       style="@style/TextAppearanceGlobalData"
       tools:text="Last updated: 1 minute ago"/>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

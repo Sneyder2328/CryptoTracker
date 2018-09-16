@@ -16,7 +16,8 @@
 
 package com.sneyder.cryptotracker.data.model
 
-import android.arch.persistence.room.TypeConverter
+import androidx.room.TypeConverter
+
 
 class SyncStatusConverter {
     companion object {

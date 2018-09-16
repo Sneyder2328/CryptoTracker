@@ -16,9 +16,11 @@
 
 package com.sneyder.cryptotracker.ui.base
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
+import android.app.Activity
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
@@ -28,5 +30,5 @@ abstract class DaggerActivity : DaggerAppCompatActivity() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     inline fun <reified T: ViewModel> getViewModel(): T =
-            ViewModelProviders.of(this, viewModelFactory).get(T::class.java)
+            ViewModelProviders.of(this as FragmentActivity, viewModelFactory).get(T::class.java)
 }

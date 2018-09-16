@@ -16,8 +16,8 @@
 
 package com.sneyder.cryptotracker.data.database
 
-import android.arch.persistence.room.Dao
-import android.arch.persistence.room.Query
+import androidx.room.Dao
+import androidx.room.Query
 import com.sneyder.cryptotracker.data.model.GlobalData
 import com.sneyder.utils.BaseDao
 import io.reactivex.Flowable

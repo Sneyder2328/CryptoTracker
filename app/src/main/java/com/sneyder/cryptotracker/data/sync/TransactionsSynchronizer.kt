@@ -21,8 +21,9 @@ import com.sneyder.cryptotracker.data.repository.UserRepository
 import debug
 import error
 import showValues
+import javax.inject.Inject
 
-class TransactionsSynchronizer(
+class TransactionsSynchronizer @Inject constructor(
         private val userRepository: UserRepository) {
 
     fun synchronizeTransactionsWithServer() {

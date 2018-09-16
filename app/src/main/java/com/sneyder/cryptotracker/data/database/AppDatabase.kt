@@ -16,9 +16,10 @@
 
 package com.sneyder.cryptotracker.data.database
 
-import android.arch.persistence.room.Database
-import android.arch.persistence.room.RoomDatabase
-import android.arch.persistence.room.TypeConverters
+
+import androidx.room.Database
+import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.sneyder.cryptotracker.data.model.*
 
 @Database(entities = [(CryptoCurrency::class), (PriceAlert::class), (GlobalData::class), (User::class), (Favorite::class), (ExchangeRate::class), (NewsArticle::class), (Transaction::class)], version = 1)

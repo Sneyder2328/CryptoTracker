@@ -16,7 +16,7 @@
 
 package com.sneyder.cryptotracker.ui.addTransaction
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import com.sneyder.cryptotracker.data.model.ExchangeRate
 import com.sneyder.cryptotracker.data.model.SyncStatus
 import com.sneyder.cryptotracker.data.model.Transaction

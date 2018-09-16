@@ -23,7 +23,7 @@ import com.sneyder.cryptotracker.di.module.AppModule
 import com.sneyder.cryptotracker.di.builder.ActivityBuilder
 import dagger.BindsInstance
 import dagger.Component
-import dagger.android.support.DaggerApplication;
+import dagger.android.support.DaggerApplication
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
