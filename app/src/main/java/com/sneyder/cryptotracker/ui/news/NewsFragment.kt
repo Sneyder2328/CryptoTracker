@@ -35,8 +35,6 @@ import distinc
 import android.os.Parcelable
 
 
-
-
 class NewsFragment : DaggerFragment() {
 
     companion object {
@@ -83,16 +81,16 @@ class NewsFragment : DaggerFragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putParcelable(BUNDLE_RECYCLER_LAYOUT, newsArticlesRecyclerView.layoutManager.onSaveInstanceState())
+        outState.putParcelable(BUNDLE_RECYCLER_LAYOUT, newsArticlesRecyclerView.layoutManager?.onSaveInstanceState())
     }
 
     private fun observeNewsArticles(savedInstanceState: Bundle?) {
-        newsViewModel.newsArticles.distinc().reObserve(this, Observer { it ->
+        newsViewModel.newsArticles.distinc().reObserve(this, Observer {
             it.ifSuccess {list->
                 newsArticlesAdapter.newsArticles = list
                 savedInstanceState?.let {
-                    val savedRecyclerLayoutState: Parcelable = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT)
-                    newsArticlesRecyclerView.layoutManager.onRestoreInstanceState(savedRecyclerLayoutState)
+                    val savedRecyclerLayoutState: Parcelable? = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT)
+                    newsArticlesRecyclerView.layoutManager?.onRestoreInstanceState(savedRecyclerLayoutState ?: return@let)
                 }
             }
         })

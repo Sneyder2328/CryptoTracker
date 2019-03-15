@@ -16,7 +16,8 @@
 
 package com.sneyder.cryptotracker.utils
 
-import kotlin.coroutines.experimental.CoroutineContext
+import kotlin.coroutines.CoroutineContext
+
 
 @SuppressWarnings()
 interface CoroutineContextProvider {

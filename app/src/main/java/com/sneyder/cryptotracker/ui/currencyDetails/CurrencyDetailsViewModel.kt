@@ -27,7 +27,9 @@ import com.sneyder.utils.Resource
 import com.sneyder.utils.schedulers.SchedulerProvider
 import com.sneyder.utils.ui.base.BaseViewModel
 import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CurrencyDetailsViewModel
@@ -43,7 +45,7 @@ class CurrencyDetailsViewModel
     val currencySelectedExchangeRate: MutableLiveData<ExchangeRate> by lazy { MutableLiveData<ExchangeRate>() }
 
     fun currencySelected(symbol: String) {
-        launch(coroutineContextProvider.CommonPool) {
+        GlobalScope.launch(Dispatchers.IO) {
             val eRate = cryptoCurrenciesRepository.findExchangeRateForSymbol(symbol).blockingFirst()
             currencySelectedExchangeRate.postValue(eRate)
         }
@@ -58,7 +60,7 @@ class CurrencyDetailsViewModel
                 .applySchedulers()
                 .subscribe({ pa ->
                     priceAlert.value = Resource.success(pa)
-                }, { _ ->
+                }, {
                     priceAlert.value = Resource.error()
                 }))
     }

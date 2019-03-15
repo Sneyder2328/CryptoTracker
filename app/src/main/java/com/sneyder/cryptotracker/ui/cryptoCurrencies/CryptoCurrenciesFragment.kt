@@ -103,7 +103,7 @@ class CryptoCurrenciesFragment : DaggerFragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putParcelable(BUNDLE_RECYCLER_LAYOUT, cryptoCurrenciesRecyclerView.layoutManager.onSaveInstanceState())
+        outState.putParcelable(BUNDLE_RECYCLER_LAYOUT, cryptoCurrenciesRecyclerView.layoutManager?.onSaveInstanceState())
     }
 
     override fun onResume() {
@@ -119,7 +119,7 @@ class CryptoCurrenciesFragment : DaggerFragment() {
     }
 
     private fun observeCurrencies(savedInstanceState: Bundle?) {
-        cryptoCurrenciesViewModel.cryptoCurrencies.distinc().observe(this, Observer { it ->
+        cryptoCurrenciesViewModel.cryptoCurrencies.distinc().observe(this, Observer {
             it.ifSuccess { currencies ->
                 sortAndFilterCurrencies(currencies)
                 swipeRefreshCurrencies.isRefreshing = false
@@ -130,8 +130,8 @@ class CryptoCurrenciesFragment : DaggerFragment() {
                 sortAndFilterCurrencies(currencies?:return@ifLoading)
             }
             savedInstanceState?.let {
-                val savedRecyclerLayoutState: Parcelable = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT)
-                cryptoCurrenciesRecyclerView.layoutManager.onRestoreInstanceState(savedRecyclerLayoutState)
+                val savedRecyclerLayoutState: Parcelable? = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT) ?: return@let
+                cryptoCurrenciesRecyclerView.layoutManager?.onRestoreInstanceState(savedRecyclerLayoutState)
             }
         })
     }

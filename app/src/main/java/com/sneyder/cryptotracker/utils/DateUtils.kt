@@ -16,11 +16,13 @@
 
 package com.sneyder.cryptotracker.utils
 
+import android.annotation.SuppressLint
 import android.content.res.Resources
 import com.sneyder.cryptotracker.R
 import java.text.SimpleDateFormat
 import java.util.*
 
+@SuppressLint("SimpleDateFormat")
 fun getLabelForTimeDifference(then: Long, now: Long = System.currentTimeMillis(), resources: Resources) : String {
     val differenceInSeconds: Int = Math.abs(now - then).toInt() / 1000
     return when {

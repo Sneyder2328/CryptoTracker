@@ -17,11 +17,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.2.61'
-    ext.kotlinx_coroutines_version = '0.22.5'
+    ext.kotlin_version = '1.3.21'
+    ext.kotlinx_coroutines_version = '1.1.1'
     ext {
-        support_library_version = '27.0.2'
-        constrain_layout_version = '1.1.0'
+        support_library_version = '28.0.0'
+        constrain_layout_version = '1.1.3'
         dagger_version = '2.17'
         retrofit2_version = '2.3.0'
         gson_version = '2.8.0'
@@ -37,14 +37,15 @@ buildscript {
         room_version = "1.1.1"
         work_version = "1.0.0-alpha05"
         timber_version = '4.6.0'
-        play_services_version = '12.0.1'
+        play_services_version = '15.0.1'
+        firebase_version = '15.0.0'
         android_job_version = "1.2.5"
         leak_canary_version = "1.5.4"
         okhttp_version = "3.8.0"
     }
     ext.deps = [
             // Kotlin
-            "kotlin_stdlib" : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version",
+            "kotlin_stdlib" : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
             "coroutines_core" : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version",
             "coroutines_android" : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_coroutines_version",
 
@@ -109,10 +110,10 @@ buildscript {
             "play_services_gcm" : "com.google.android.gms:play-services-gcm:$play_services_version",
 
             // Firebase
-            "firebase_core" : "com.google.firebase:firebase-core:$play_services_version",
-            "firebase_ads" : "com.google.firebase:firebase-ads:$play_services_version",
-            "firebase_analytics" : "com.google.firebase:firebase-analytics:$play_services_version",
-            "firebase_messaging" : "com.google.firebase:firebase-messaging:$play_services_version",
+            "firebase_core" : "com.google.firebase:firebase-core:$firebase_version",
+            "firebase_ads" : "com.google.firebase:firebase-ads:$firebase_version",
+            "firebase_analytics" : "com.google.firebase:firebase-analytics:$firebase_version",
+            "firebase_messaging" : "com.google.firebase:firebase-messaging:15.0.2",
 
             // Android Job(by Evernote)
             "android_job" : "com.evernote:android-job:$android_job_version",
@@ -140,7 +141,7 @@ buildscript {
             "mockwebserver" : "com.squareup.okhttp3:mockwebserver:$okhttp_version",
 
             // Crashlytics
-            "crashlytics" : "com.crashlytics.sdk.android:crashlytics:2.7.1@aar",
+            "crashlytics" : "com.crashlytics.sdk.android:crashlytics:2.9.5",
 
             // Facebook
             "facebook" : "com.facebook.android:facebook-android-sdk:4.+",
@@ -156,9 +157,9 @@ buildscript {
         maven { url 'https://jitpack.io' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.android.tools.build:gradle:3.3.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.google.gms:google-services:3.2.1'
+        classpath 'com.google.gms:google-services:4.2.0'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

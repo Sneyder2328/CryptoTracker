@@ -26,7 +26,9 @@ import com.sneyder.utils.Resource
 import com.sneyder.utils.schedulers.SchedulerProvider
 import com.sneyder.utils.ui.base.BaseViewModel
 import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class TransactionsByPairDetailsViewModel
@@ -45,17 +47,17 @@ class TransactionsByPairDetailsViewModel
     private var tradingPair: String = ""
 
     fun loadTransactions(tradingPair: String) {
-        if(this.tradingPair == tradingPair){
+        if (this.tradingPair == tradingPair) {
             return
         }
         this.tradingPair = tradingPair
         add(userRepository.findTransactionsByTradingPair(tradingPair)
                 .applySchedulers()
                 .subscribeBy(
-                        onNext = { transactions->
-                            launch(coroutineContextProvider.CommonPool) {
+                        onNext = { transactions ->
+                            GlobalScope.launch(Dispatchers.IO) {
                                 val transactionsByPairSet = TransactionsByPairSet(tradingPair)
-                                val symbol = tradingPair.substring(tradingPair.indexOf("/")+1)
+                                val symbol = tradingPair.substring(tradingPair.indexOf("/") + 1)
                                 val symbolCrypto = tradingPair.substring(0, tradingPair.indexOf("/"))
                                 val eRate = cryptoCurrenciesRepository.findExchangeRateForSymbol(symbol).blockingFirst()
                                 transactionsByPairSet.rateToUsd = eRate.rate
@@ -76,7 +78,7 @@ class TransactionsByPairDetailsViewModel
     }
 
 
-    private fun getCryptoCurrencyPriceBySymbol(cryptoCurrencySymbol: String)
-            = cryptoCurrencies.findLast { it.symbol == cryptoCurrencySymbol }?.price ?: 1.0
+    private fun getCryptoCurrencyPriceBySymbol(cryptoCurrencySymbol: String) = cryptoCurrencies.findLast { it.symbol == cryptoCurrencySymbol }?.price
+            ?: 1.0
 
 }

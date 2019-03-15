@@ -26,7 +26,8 @@ import com.sneyder.utils.Resource
 import com.sneyder.utils.schedulers.SchedulerProvider
 import com.sneyder.utils.ui.base.BaseViewModel
 import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class PortfolioViewModel
@@ -53,7 +54,7 @@ class PortfolioViewModel
                 .applySchedulers()
                 .subscribeBy(
                         onNext = { transactions ->
-                            launch (coroutineContextProvider.CommonPool) {
+                            GlobalScope.launch(coroutineContextProvider.CommonPool) {
                                 val tradingPairs: MutableSet<String> = LinkedHashSet()
                                 val transactionsByPairSets: MutableList<TransactionsByPairSet> = ArrayList()
 
@@ -90,7 +91,7 @@ class PortfolioViewModel
     fun currencySelected(index: Int, symbol: String) {
         currencySelected = symbol
         currencySelectedIndex = index
-        launch(coroutineContextProvider.CommonPool) {
+        GlobalScope.launch(coroutineContextProvider.CommonPool) {
             val eRate = cryptoCurrenciesRepository.findExchangeRateForSymbol(symbol).blockingFirst()
             currencySelectedExchangeRate.postValue(eRate)
         }

@@ -32,7 +32,9 @@ import com.sneyder.utils.schedulers.SchedulerProvider
 import com.sneyder.utils.ui.base.BaseViewModel
 import debug
 import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class CryptoCurrenciesViewModel
@@ -60,7 +62,7 @@ class CryptoCurrenciesViewModel
         loadCryptoCurrenciesFromLocalDb()
         loadFavorites()
         exchangeRate.addSource(userRepository.currencySelection()) { currency ->
-            launch(coroutineContextProvider.CommonPool) {
+            GlobalScope.launch(coroutineContextProvider.CommonPool) {
                 val eR = cryptoCurrenciesRepository.findExchangeRateForSymbol(Constants.CURRENCIES[currency!!]).blockingFirst()
                 exchangeRate.postValue(eR)
             }
@@ -94,7 +96,7 @@ class CryptoCurrenciesViewModel
         add(userRepository.findFavorites()
                 .applySchedulers()
                 .subscribeBy(
-                        onNext = { it ->
+                        onNext = {
                             favorites = it.filter { it.syncStatus != SyncStatus.PENDING_TO_DELETE }
                             updateCurrencies()
                         },

@@ -18,8 +18,8 @@ package com.sneyder.cryptotracker.data.hashGenerator
 
 import android.util.Base64
 import debug
-import kotlinx.coroutines.experimental.CommonPool
-import kotlinx.coroutines.experimental.withContext
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.crypto.SecretKeyFactory
 import javax.crypto.spec.PBEKeySpec
 import javax.crypto.spec.SecretKeySpec
@@ -34,7 +34,7 @@ class AppHasher : Hasher() {
             keyLength: Int, // 256-bits for AES-256, 128-bits for AES-128, etc
             iterationCount: Int
     ): String {
-        return withContext(CommonPool) {
+        return withContext(Dispatchers.IO) {
             debug("starting at: ${System.currentTimeMillis()}")
             val keyFactory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1")
             val pepper: ByteArray = Base64.decode("imfa${getPepper()}", Base64.DEFAULT)

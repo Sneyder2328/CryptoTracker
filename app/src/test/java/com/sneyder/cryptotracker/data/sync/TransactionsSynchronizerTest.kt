@@ -24,7 +24,7 @@ import com.sneyder.cryptotracker.data.repository.UserRepository
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
-import kotlinx.coroutines.experimental.runBlocking
+import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 

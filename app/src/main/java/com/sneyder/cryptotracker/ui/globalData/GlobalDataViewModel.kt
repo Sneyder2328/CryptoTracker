@@ -27,7 +27,9 @@ import com.sneyder.utils.Resource
 import com.sneyder.utils.schedulers.SchedulerProvider
 import com.sneyder.utils.ui.base.BaseViewModel
 import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class GlobalDataViewModel
@@ -42,7 +44,7 @@ class GlobalDataViewModel
     private var globalData: MutableLiveData<Resource<GlobalData>>? = null
 
     fun getGlobalData(): MutableLiveData<Resource<GlobalData>> {
-        if(globalData == null){
+        if (globalData == null) {
             globalData = MutableLiveData()
             loadGlobalDataFromLocalDb()
         }
@@ -55,7 +57,7 @@ class GlobalDataViewModel
 
     fun currencySelected(index: Int, symbol: String) {
         userRepository.setCurrencySelection(javaClass.name, index)
-        launch(coroutineContextProvider.CommonPool) {
+        GlobalScope.launch(Dispatchers.IO) {
             val eRate = cryptoCurrenciesRepository.findExchangeRateForSymbol(symbol).blockingFirst()
             currencySelectedExchangeRate.postValue(eRate)
         }

@@ -75,7 +75,7 @@ class GlobalDataFragment : DaggerFragment() {
     }
 
     private fun observeGlobalData() {
-        globalDataViewModel.getGlobalData().reObserve(this, Observer { it->
+        globalDataViewModel.getGlobalData().reObserve(this, Observer {
             it.ifSuccess {
                 globalData = it
                 updateData()

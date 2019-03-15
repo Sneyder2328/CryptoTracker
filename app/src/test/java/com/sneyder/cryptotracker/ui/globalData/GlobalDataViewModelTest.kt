@@ -31,7 +31,7 @@ import com.sneyder.cryptotracker.data.repository.UserRepository
 import com.sneyder.cryptotracker.ui.base.BaseViewModelTest
 import com.sneyder.utils.Resource
 import io.reactivex.Flowable
-import kotlinx.coroutines.experimental.runBlocking
+import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 

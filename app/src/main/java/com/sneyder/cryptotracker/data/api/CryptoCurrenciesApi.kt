@@ -54,7 +54,7 @@ interface CryptoCurrenciesApi {
 
         const val UPDATE_TRANSACTION = "updateTransaction.php"
 
-        const val UPDATE_FIREBASE_TOKENID = "updateFirebaseTokenId.php"
+        const val UPDATE_FIREBASE_TOKEN_ID = "updateFirebaseTokenId.php"
 
         const val GET_PRICE_ALERTS_BY_USER_ID = "getPriceAlertsByUserId.php"
 
@@ -92,7 +92,7 @@ interface CryptoCurrenciesApi {
             @Field("userId") userId: String = ""
     ): Single<User>
 
-    @POST(UPDATE_FIREBASE_TOKENID) @Json
+    @POST(UPDATE_FIREBASE_TOKEN_ID) @Json
     @FormUrlEncoded
     fun updateFirebaseTokenId(
             @Field("userId") userId: String,

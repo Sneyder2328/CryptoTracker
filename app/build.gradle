@@ -38,7 +38,7 @@ buildscript {
     maven { url 'https://maven.fabric.io/public' }
   }
   dependencies {
-    classpath 'io.fabric.tools:gradle:1.25.4'
+    classpath 'io.fabric.tools:gradle:1.27.1'
   }
 }
 
@@ -55,9 +55,6 @@ kapt {
 
 
 android {
-  dexOptions {
-    incremental true
-  }
   /*
     * By default JUnit unit tests generate both HTML and XML reports every time you execute your app unit tests,
     * in order to disable simply set these flags to false.
@@ -112,9 +109,6 @@ android {
       signingConfig signingConfigs.release
 
     }
-  }
-  androidExtensions {
-    experimental = true
   }
   // Test Android jar comes with unimplemented methods that throw exceptions by default. This
   // option forces the methods to return default values instead. Required for static methods,

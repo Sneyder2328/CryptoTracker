@@ -17,11 +17,12 @@
 package com.sneyder.cryptotracker
 
 import com.sneyder.cryptotracker.utils.CoroutineContextProvider
-import kotlin.coroutines.experimental.CoroutineContext
+import kotlinx.coroutines.Dispatchers
+import kotlin.coroutines.CoroutineContext
 
 class TestingCoroutineContextProvider : CoroutineContextProvider {
 
-    override val Unconfined: CoroutineContext = kotlinx.coroutines.experimental.Unconfined
-    override val CommonPool: CoroutineContext = kotlinx.coroutines.experimental.Unconfined
-    override val UI: CoroutineContext = kotlinx.coroutines.experimental.Unconfined
+    override val Unconfined: CoroutineContext = Dispatchers.Unconfined
+    override val CommonPool: CoroutineContext = Dispatchers.IO
+    override val UI: CoroutineContext = Dispatchers.Main
 }

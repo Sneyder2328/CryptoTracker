@@ -26,7 +26,9 @@ import com.sneyder.utils.Resource
 import com.sneyder.utils.schedulers.SchedulerProvider
 import com.sneyder.utils.ui.base.BaseViewModel
 import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class SignUpViewModel
@@ -41,7 +43,7 @@ class SignUpViewModel
 
     fun signUp(userRequest: UserRequest) {
         user.value = Resource.loading()
-        launch(coroutineContextProvider.UI) {
+        GlobalScope.launch(Dispatchers.Main) {
             add(userRepository.signUpUser(userRequest.apply { password = hasher.hash(password + email) })
                     .applySchedulers()
                     .subscribeBy(

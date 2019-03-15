@@ -26,7 +26,9 @@ import com.sneyder.utils.Resource
 import com.sneyder.utils.schedulers.SchedulerProvider
 import com.sneyder.utils.ui.base.BaseViewModel
 import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.coroutines.experimental.launch
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class LogInViewModel
@@ -40,7 +42,7 @@ class LogInViewModel
     val user: MutableLiveData<Resource<User>> by lazy { MutableLiveData<Resource<User>>() }
 
     fun logInUser(email: String, password: String, typeLogin: String, accessToken: String = "", userId: String = "") {
-        launch(coroutineContextProvider.UI) {//It was UI
+        GlobalScope.launch(Dispatchers.Main) {//It was UI
             user.postValue(Resource.loading())
             add(userRepository.logInUser(
                     UserRequest(
