@@ -26,9 +26,9 @@ interface CryptoCurrenciesApi {
 
     companion object {
 
-        const val END_POINT = "https://sneyder.net/CryptoTracker/"
+        const val END_POINT = "http://sneyder.net/CryptoTracker/"
 
-        const val ALTERNATIVE_END_POINT = "http://52.21.172.205/CryptoTracker/"
+        const val ALTERNATIVE_END_POINT = "http://23.20.226.143/CryptoTracker/"
 
         const val SIGN_UP_USER = "signUp.php"
 

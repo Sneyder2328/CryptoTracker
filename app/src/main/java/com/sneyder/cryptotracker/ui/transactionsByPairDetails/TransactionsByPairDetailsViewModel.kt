@@ -21,12 +21,11 @@ import com.sneyder.cryptotracker.data.model.Transaction
 import com.sneyder.cryptotracker.data.model.TransactionsByPairSet
 import com.sneyder.cryptotracker.data.repository.CryptoCurrenciesRepository
 import com.sneyder.cryptotracker.data.repository.UserRepository
-import com.sneyder.cryptotracker.utils.CoroutineContextProvider
+import com.sneyder.utils.CoroutineContextProvider
 import com.sneyder.utils.Resource
 import com.sneyder.utils.schedulers.SchedulerProvider
 import com.sneyder.utils.ui.base.BaseViewModel
 import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -36,8 +35,8 @@ class TransactionsByPairDetailsViewModel
         private val userRepository: UserRepository,
         private val cryptoCurrenciesRepository: CryptoCurrenciesRepository,
         schedulerProvider: SchedulerProvider,
-        private val coroutineContextProvider: CoroutineContextProvider
-) : BaseViewModel(schedulerProvider) {
+        coroutineContextProvider: CoroutineContextProvider
+) : BaseViewModel(schedulerProvider, coroutineContextProvider) {
 
     private val cryptoCurrencies by lazy { cryptoCurrenciesRepository.findCryptoCurrencies().blockingFirst() }
 
@@ -55,7 +54,7 @@ class TransactionsByPairDetailsViewModel
                 .applySchedulers()
                 .subscribeBy(
                         onNext = { transactions ->
-                            GlobalScope.launch(Dispatchers.IO) {
+                            GlobalScope.launch(IO) {
                                 val transactionsByPairSet = TransactionsByPairSet(tradingPair)
                                 val symbol = tradingPair.substring(tradingPair.indexOf("/") + 1)
                                 val symbolCrypto = tradingPair.substring(0, tradingPair.indexOf("/"))

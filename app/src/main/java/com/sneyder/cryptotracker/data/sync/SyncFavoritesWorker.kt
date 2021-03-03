@@ -21,21 +21,21 @@ import com.sneyder.cryptotracker.BaseApp
 import debug
 import javax.inject.Inject
 
-class SyncFavoritesWorker: Worker() {
+class SyncFavoritesWorker : Worker() {
 
-    @Inject lateinit var favoritesSynchronizer: FavoritesSynchronizer
+    @Inject
+    lateinit var favoritesSynchronizer: FavoritesSynchronizer
 
-    override fun doWork(): Result {
-        debug("SyncFavoritesWorker doWork START")
-        try {
-            (applicationContext as BaseApp).appComponent.inject(this)
-            favoritesSynchronizer.synchronizeFavoritesWithServer()
-        } catch (e: Exception) {
-            e.printStackTrace()
-            debug("SyncFavoritesWorker RETRY")
-            return Result.RETRY
-        }
-        debug("SyncFavoritesWorker doWork SUCCESS")
-        return Result.SUCCESS
-    }
+    override fun doWork(): Result =
+            try {
+                debug("SyncFavoritesWorker doWork START")
+                (applicationContext as BaseApp).appComponent.inject(this)
+                favoritesSynchronizer.synchronizeFavoritesWithServer()
+                debug("SyncFavoritesWorker doWork SUCCESS")
+                Result.SUCCESS
+            } catch (e: Exception) {
+                e.printStackTrace()
+                debug("SyncFavoritesWorker RETRY")
+                Result.RETRY
+            }
 }

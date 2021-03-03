@@ -94,9 +94,9 @@ class SignUpActivity : DaggerActivity() {
                 hideLoadingDialog()
                 openMainActivity()
             }
-            user.ifError { it ->
+            user.ifError {
                 hideLoadingDialog()
-                it?.let{ toast(it) }
+                it?.let{ it2 -> toast(it2) }
                 signUpEmailButton.isEnabled = true
                 signUpFacebookButton.isEnabled = true
                 signUpGoogleButton.isEnabled = true

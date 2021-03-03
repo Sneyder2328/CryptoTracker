@@ -16,13 +16,16 @@
 
 package com.sneyder.cryptotracker.utils
 
+import com.sneyder.utils.CoroutineContextProvider
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
 
-class AppCoroutineContextProvider: CoroutineContextProvider {
+class AppCoroutineContextProvider : CoroutineContextProvider {
+
+    override val IO: CoroutineContext = Dispatchers.IO
+
+    override val Main: CoroutineContext = Dispatchers.Main
+
     override val Unconfined: CoroutineContext = Dispatchers.Unconfined
 
-    override val CommonPool: CoroutineContext = Dispatchers.IO
-
-    override val UI: CoroutineContext = Dispatchers.Main
 }

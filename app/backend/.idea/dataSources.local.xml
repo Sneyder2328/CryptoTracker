@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="MySQL - sneyderdatabase@sdmessagesinstance.ciqq5qzpr9k4.us-east-1.rds.amazonaws.com" uuid="1a8353a5-e1a1-491a-b2bb-1355c224b50b" />
+    <data-source name="MySQL - sneyderdatabase@sdmessagesinstance.ciqq5qzpr9k4.us-east-1.rds.amazonaws.com" uuid="1a8353a5-e1a1-491a-b2bb-1355c224b50b">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0" />
+      <schema-mapping />
+    </data-source>
   </component>
 </project>

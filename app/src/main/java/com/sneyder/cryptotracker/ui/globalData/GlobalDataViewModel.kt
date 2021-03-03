@@ -22,12 +22,6 @@ import com.sneyder.cryptotracker.data.model.GlobalData
 import com.sneyder.cryptotracker.data.repository.CryptoCurrenciesRepository
 import com.sneyder.cryptotracker.data.repository.GlobalDataRepository
 import com.sneyder.cryptotracker.data.repository.UserRepository
-import com.sneyder.cryptotracker.utils.CoroutineContextProvider
-import com.sneyder.utils.Resource
-import com.sneyder.utils.schedulers.SchedulerProvider
-import com.sneyder.utils.ui.base.BaseViewModel
-import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -38,8 +32,8 @@ class GlobalDataViewModel
         private val cryptoCurrenciesRepository: CryptoCurrenciesRepository,
         private val globalDataRepository: GlobalDataRepository,
         schedulerProvider: SchedulerProvider,
-        private val coroutineContextProvider: CoroutineContextProvider
-) : BaseViewModel(schedulerProvider) {
+        coroutineContextProvider: CoroutineContextProvider
+) : BaseViewModel(schedulerProvider, coroutineContextProvider) {
 
     private var globalData: MutableLiveData<Resource<GlobalData>>? = null
 
@@ -57,7 +51,7 @@ class GlobalDataViewModel
 
     fun currencySelected(index: Int, symbol: String) {
         userRepository.setCurrencySelection(javaClass.name, index)
-        GlobalScope.launch(Dispatchers.IO) {
+        launch(IO) {
             val eRate = cryptoCurrenciesRepository.findExchangeRateForSymbol(symbol).blockingFirst()
             currencySelectedExchangeRate.postValue(eRate)
         }

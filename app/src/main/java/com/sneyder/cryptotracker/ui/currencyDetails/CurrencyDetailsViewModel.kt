@@ -22,12 +22,11 @@ import com.sneyder.cryptotracker.data.model.PriceAlert
 import com.sneyder.cryptotracker.data.model.SyncStatus
 import com.sneyder.cryptotracker.data.repository.CryptoCurrenciesRepository
 import com.sneyder.cryptotracker.data.repository.UserRepository
-import com.sneyder.cryptotracker.utils.CoroutineContextProvider
+import com.sneyder.utils.CoroutineContextProvider
 import com.sneyder.utils.Resource
 import com.sneyder.utils.schedulers.SchedulerProvider
 import com.sneyder.utils.ui.base.BaseViewModel
 import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -37,15 +36,15 @@ class CurrencyDetailsViewModel
         private var userRepository: UserRepository,
         private var cryptoCurrenciesRepository: CryptoCurrenciesRepository,
         schedulerProvider: SchedulerProvider,
-        private var coroutineContextProvider: CoroutineContextProvider
-) : BaseViewModel(schedulerProvider) {
+        coroutineContextProvider: CoroutineContextProvider
+) : BaseViewModel(schedulerProvider, coroutineContextProvider) {
 
     fun getCurrency() = userRepository.getCurrencySelection(javaClass.name)
 
     val currencySelectedExchangeRate: MutableLiveData<ExchangeRate> by lazy { MutableLiveData<ExchangeRate>() }
 
     fun currencySelected(symbol: String) {
-        GlobalScope.launch(Dispatchers.IO) {
+        GlobalScope.launch(IO) {
             val eRate = cryptoCurrenciesRepository.findExchangeRateForSymbol(symbol).blockingFirst()
             currencySelectedExchangeRate.postValue(eRate)
         }

@@ -19,6 +19,7 @@ package com.sneyder.cryptotracker.ui.news
 import android.arch.lifecycle.MutableLiveData
 import com.sneyder.cryptotracker.data.model.NewsArticle
 import com.sneyder.cryptotracker.data.repository.NewsRepository
+import com.sneyder.utils.CoroutineContextProvider
 import com.sneyder.utils.Resource
 import com.sneyder.utils.schedulers.SchedulerProvider
 import com.sneyder.utils.ui.base.BaseViewModel
@@ -28,8 +29,9 @@ import javax.inject.Inject
 class NewsViewModel
 @Inject constructor(
         private val newsRepository: NewsRepository,
-        schedulerProvider: SchedulerProvider
-) : BaseViewModel(schedulerProvider) {
+        schedulerProvider: SchedulerProvider,
+        coroutineContextProvider: CoroutineContextProvider
+) : BaseViewModel(schedulerProvider, coroutineContextProvider) {
 
     val newsArticles: MutableLiveData<Resource<List<NewsArticle>>> by lazy { MutableLiveData<Resource<List<NewsArticle>>>() }
 

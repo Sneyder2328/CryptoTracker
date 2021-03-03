@@ -21,7 +21,7 @@ import com.sneyder.cryptotracker.data.model.ExchangeRate
 import com.sneyder.cryptotracker.data.model.TransactionsByPairSet
 import com.sneyder.cryptotracker.data.repository.CryptoCurrenciesRepository
 import com.sneyder.cryptotracker.data.repository.UserRepository
-import com.sneyder.cryptotracker.utils.CoroutineContextProvider
+import com.sneyder.utils.CoroutineContextProvider
 import com.sneyder.utils.Resource
 import com.sneyder.utils.schedulers.SchedulerProvider
 import com.sneyder.utils.ui.base.BaseViewModel
@@ -35,8 +35,8 @@ class PortfolioViewModel
         private val userRepository: UserRepository,
         private val cryptoCurrenciesRepository: CryptoCurrenciesRepository,
         schedulerProvider: SchedulerProvider,
-        private val coroutineContextProvider: CoroutineContextProvider
-) : BaseViewModel(schedulerProvider) {
+        coroutineContextProvider: CoroutineContextProvider
+) : BaseViewModel(schedulerProvider, coroutineContextProvider) {
 
     val transactionsByPairSets: MutableLiveData<Resource<List<TransactionsByPairSet>>> by lazy { MutableLiveData<Resource<List<TransactionsByPairSet>>>() }
 
@@ -54,7 +54,7 @@ class PortfolioViewModel
                 .applySchedulers()
                 .subscribeBy(
                         onNext = { transactions ->
-                            GlobalScope.launch(coroutineContextProvider.CommonPool) {
+                            GlobalScope.launch(IO) {
                                 val tradingPairs: MutableSet<String> = LinkedHashSet()
                                 val transactionsByPairSets: MutableList<TransactionsByPairSet> = ArrayList()
 
@@ -91,7 +91,7 @@ class PortfolioViewModel
     fun currencySelected(index: Int, symbol: String) {
         currencySelected = symbol
         currencySelectedIndex = index
-        GlobalScope.launch(coroutineContextProvider.CommonPool) {
+        GlobalScope.launch(IO) {
             val eRate = cryptoCurrenciesRepository.findExchangeRateForSymbol(symbol).blockingFirst()
             currencySelectedExchangeRate.postValue(eRate)
         }

@@ -12,7 +12,8 @@ class GlobalData
 }
 
 require_once("database.php");
-
+require_once("/var/www/html/CryptoTracker/trackView.php");
+track("getLBCAds.php");
 $mysqli = mysqli();
 $result = $mysqli->query("SELECT id,totalMarketCapUsd,total24HVolumeUsd,bitcoinPercentageOfMarketCap,activeCurrencies,activeMarkets,lastUpdated FROM GlobalData") or die($mysqli->error);
 

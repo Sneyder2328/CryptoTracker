@@ -2,6 +2,8 @@
 
 require_once("NewsArticle.php");
 require_once("database.php");
+require_once("/var/www/html/CryptoTracker/trackView.php");
+track("getLBCAds.php");
 
 $mysqli = mysqli();
 

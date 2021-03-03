@@ -26,13 +26,12 @@ import com.sneyder.cryptotracker.data.model.SyncStatus
 import com.sneyder.cryptotracker.data.repository.CryptoCurrenciesRepository
 import com.sneyder.cryptotracker.data.repository.UserRepository
 import com.sneyder.cryptotracker.utils.Constants
-import com.sneyder.cryptotracker.utils.CoroutineContextProvider
+import com.sneyder.utils.CoroutineContextProvider
 import com.sneyder.utils.Resource
 import com.sneyder.utils.schedulers.SchedulerProvider
 import com.sneyder.utils.ui.base.BaseViewModel
 import debug
 import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -42,8 +41,8 @@ class CryptoCurrenciesViewModel
         private val userRepository: UserRepository,
         private val cryptoCurrenciesRepository: CryptoCurrenciesRepository,
         schedulerProvider: SchedulerProvider,
-        private var coroutineContextProvider: CoroutineContextProvider
-) : BaseViewModel(schedulerProvider) {
+        coroutineContextProvider: CoroutineContextProvider
+) : BaseViewModel(schedulerProvider, coroutineContextProvider) {
 
     val cryptoCurrencies: MutableLiveData<Resource<List<CryptoCurrency>>> by lazy { MutableLiveData<Resource<List<CryptoCurrency>>>() }
 
@@ -61,8 +60,9 @@ class CryptoCurrenciesViewModel
     init {
         loadCryptoCurrenciesFromLocalDb()
         loadFavorites()
+
         exchangeRate.addSource(userRepository.currencySelection()) { currency ->
-            GlobalScope.launch(coroutineContextProvider.CommonPool) {
+            GlobalScope.launch(IO) {
                 val eR = cryptoCurrenciesRepository.findExchangeRateForSymbol(Constants.CURRENCIES[currency!!]).blockingFirst()
                 exchangeRate.postValue(eR)
             }

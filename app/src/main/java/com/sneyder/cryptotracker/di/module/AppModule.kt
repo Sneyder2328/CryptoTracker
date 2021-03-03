@@ -24,7 +24,7 @@ import com.sneyder.cryptotracker.data.hashGenerator.Hasher
 import com.sneyder.cryptotracker.data.preferences.AppPreferencesHelper
 import com.sneyder.cryptotracker.data.preferences.PreferencesHelper
 import com.sneyder.cryptotracker.utils.AppCoroutineContextProvider
-import com.sneyder.cryptotracker.utils.CoroutineContextProvider
+import com.sneyder.utils.CoroutineContextProvider
 import com.sneyder.utils.schedulers.AppSchedulerProvider
 import com.sneyder.utils.schedulers.SchedulerProvider
 import dagger.Binds

@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CryptoTracker.iml" filepath="$PROJECT_DIR$/CryptoTracker.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/CryptoTracker.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/CryptoTracker.app.iml" />
     </modules>
   </component>
 </project>

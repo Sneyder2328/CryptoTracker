@@ -32,14 +32,29 @@ import io.reactivex.rxkotlin.subscribeBy
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import androidx.work.WorkManager
+import com.sneyder.utils.CoroutineContextProvider
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class MainViewModel
 @Inject constructor(
         private val userRepository: UserRepository,
         private val cryptoCurrenciesRepository: CryptoCurrenciesRepository,
-        schedulerProvider: SchedulerProvider
-) : BaseViewModel(schedulerProvider) {
+        schedulerProvider: SchedulerProvider,
+        coroutineContextProvider: CoroutineContextProvider
+) : BaseViewModel(schedulerProvider, coroutineContextProvider) {
+
+    fun testMethod(){
+        GlobalScope.launch(IO){
+            (1..10).forEach {
+                debug("do it $it")
+                delay(1000)
+            }
+        }
+    }
 
     private var user: MutableLiveData<Resource<User>>? = null
 

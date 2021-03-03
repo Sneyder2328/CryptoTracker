@@ -20,6 +20,7 @@ import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
+import com.sneyder.cryptotracker.TestingCoroutineContextProvider
 import com.sneyder.cryptotracker.TestingSchedulerProvider
 import com.sneyder.cryptotracker.blockingObserve
 import com.sneyder.cryptotracker.data.model.CryptoCurrency
@@ -41,7 +42,7 @@ class CurrencySelectorViewModelTest : BaseViewModelTest() {
     @Before
     fun setUp() {
         cryptoCurrenciesRepository = mock()
-        viewModel = CurrencySelectorViewModel(cryptoCurrenciesRepository, TestingSchedulerProvider())
+        viewModel = CurrencySelectorViewModel(cryptoCurrenciesRepository, TestingSchedulerProvider(), TestingCoroutineContextProvider())
     }
 
     @Test

@@ -17,6 +17,7 @@
 package com.sneyder.cryptotracker.ui.main
 
 import com.nhaarman.mockito_kotlin.*
+import com.sneyder.cryptotracker.TestingCoroutineContextProvider
 import com.sneyder.cryptotracker.TestingSchedulerProvider
 import com.sneyder.cryptotracker.blockingObserve
 import com.sneyder.cryptotracker.ui.base.BaseViewModelTest
@@ -44,7 +45,7 @@ class MainViewModelTest : BaseViewModelTest() {
         cryptoCurrenciesRepository = mock()
         userRepository = mock()
         whenever(cryptoCurrenciesRepository.findCryptoCurrencies()).thenReturn(Flowable.just(list))
-        viewModel = MainViewModel(userRepository, cryptoCurrenciesRepository, TestingSchedulerProvider())
+        viewModel = MainViewModel(userRepository, cryptoCurrenciesRepository, TestingSchedulerProvider(), TestingCoroutineContextProvider())
     }
 
     @Test

@@ -1,8 +1,8 @@
 <?php
 
-$userId = $_POST['userId'];
-$sessionId = $_POST['sessionId'];
-$currencyId = $_POST['currencyId'];
+$userId = $_REQUEST['userId'];
+$sessionId = $_REQUEST['sessionId'];
+$currencyId = $_REQUEST['currencyId'];
 
 require_once("sessionVerification.php");
 require_once("database.php");

@@ -84,6 +84,7 @@ class MainActivity : DaggerActivity(), NavigationView.OnNavigationItemSelectedLi
         setUpLoggingButtonsListener()
         setUpAmazonAdBanner()
         observeUserLogged()
+        mainViewModel.testMethod()
     }
 
     private fun initAdsSKDs(){

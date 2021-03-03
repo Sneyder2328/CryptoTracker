@@ -20,6 +20,7 @@ import com.nhaarman.mockito_kotlin.doReturn
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.times
 import com.nhaarman.mockito_kotlin.verify
+import com.sneyder.cryptotracker.TestingCoroutineContextProvider
 import com.sneyder.cryptotracker.TestingSchedulerProvider
 import com.sneyder.cryptotracker.blockingObserve
 import com.sneyder.cryptotracker.data.model.NewsArticle
@@ -42,7 +43,7 @@ class NewsViewModelTest : BaseViewModelTest() {
             on { findNewsArticles() } doReturn Flowable.just(news)
         }
         // When
-        val viewModel = NewsViewModel(newsRepository, TestingSchedulerProvider())
+        val viewModel = NewsViewModel(newsRepository, TestingSchedulerProvider(), TestingCoroutineContextProvider())
 
         // Then
         assertEquals(Resource.success(news), viewModel.newsArticles.blockingObserve())
@@ -59,7 +60,7 @@ class NewsViewModelTest : BaseViewModelTest() {
             on { findNewsArticles() } doReturn Flowable.just(news)
         }
         // When
-        val viewModel = NewsViewModel(newsRepository, TestingSchedulerProvider())
+        val viewModel = NewsViewModel(newsRepository, TestingSchedulerProvider(), TestingCoroutineContextProvider())
 
         // Then
         assertEquals(Resource.success(news.sortedByDescending { it.pubDate.toLong() }), viewModel.newsArticles.blockingObserve())
@@ -72,7 +73,7 @@ class NewsViewModelTest : BaseViewModelTest() {
             on { findNewsArticles() } doReturn Flowable.error(Throwable())
         }
         // When
-        val viewModel = NewsViewModel(newsRepository, TestingSchedulerProvider())
+        val viewModel = NewsViewModel(newsRepository, TestingSchedulerProvider(), TestingCoroutineContextProvider())
 
         // Then
         assertEquals(Resource.error<NewsArticle>(), viewModel.newsArticles.blockingObserve())
@@ -86,7 +87,7 @@ class NewsViewModelTest : BaseViewModelTest() {
             on { findNewsArticles() } doReturn Flowable.just(news)
             on { refreshNewsArticles() } doReturn Completable.complete()
         }
-        val viewModel = NewsViewModel(newsRepository, TestingSchedulerProvider())
+        val viewModel = NewsViewModel(newsRepository, TestingSchedulerProvider(), TestingCoroutineContextProvider())
 
         // When
         viewModel.refreshNewsArticles()
